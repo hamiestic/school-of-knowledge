@@ -444,7 +444,7 @@ export function DashboardView({ onNavigate }: DashboardViewProps) {
 
       {/* Active / Inactive split */}
       {data && (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Card>
             <CardContent className="p-5 flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">

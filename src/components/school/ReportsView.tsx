@@ -308,7 +308,7 @@ export function ReportsView() {
       <Card>
         <CardContent className="p-0">
           <div className="overflow-x-auto">
-            <Table>
+            <Table className="min-w-[680px]">
               <TableHeader>
                 <TableRow className="bg-muted/40">
                   <TableHead>Student</TableHead>
@@ -652,7 +652,7 @@ function StudentPaymentHistory({
                   key={r.id}
                   className="border rounded-lg p-3"
                 >
-                  <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
                     <div>
                       <span className="font-semibold">
                         {MONTHS[r.month - 1]} {r.year}
@@ -664,18 +664,24 @@ function StudentPaymentHistory({
                         {r.status}
                       </Badge>
                     </div>
-                    <div className="text-sm">
-                      Total:{" "}
-                      <span className="font-semibold">
-                        {formatMoney(r.totalPayable)}
-                      </span>{" "}
-                      · Paid:{" "}
-                      <span className="font-semibold text-emerald-700">
-                        {formatMoney(r.amountPaid)}
-                      </span>{" "}
-                      · Due:{" "}
-                      <span className="font-semibold text-rose-700">
-                        {formatMoney(r.remainingBalance)}
+                    <div className="text-sm flex flex-wrap gap-x-3 gap-y-1">
+                      <span>
+                        Total:{" "}
+                        <span className="font-semibold">
+                          {formatMoney(r.totalPayable)}
+                        </span>
+                      </span>
+                      <span>
+                        Paid:{" "}
+                        <span className="font-semibold text-emerald-700">
+                          {formatMoney(r.amountPaid)}
+                        </span>
+                      </span>
+                      <span>
+                        Due:{" "}
+                        <span className="font-semibold text-rose-700">
+                          {formatMoney(r.remainingBalance)}
+                        </span>
                       </span>
                     </div>
                   </div>

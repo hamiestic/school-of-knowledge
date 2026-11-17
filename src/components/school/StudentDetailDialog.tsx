@@ -159,20 +159,24 @@ export function StudentDetailDialog({
                         {r.status}
                       </Badge>
                     </div>
-                    <div className="text-sm">
-                      <span className="text-muted-foreground">Total: </span>
-                      <span className="font-semibold">
-                        {formatMoney(r.totalPayable)}
+                    <div className="text-sm flex flex-wrap gap-x-3 gap-y-1">
+                      <span>
+                        <span className="text-muted-foreground">Total: </span>
+                        <span className="font-semibold">
+                          {formatMoney(r.totalPayable)}
+                        </span>
                       </span>
-                      <span className="mx-1">·</span>
-                      <span className="text-muted-foreground">Paid: </span>
-                      <span className="font-semibold text-emerald-700">
-                        {formatMoney(r.amountPaid)}
+                      <span>
+                        <span className="text-muted-foreground">Paid: </span>
+                        <span className="font-semibold text-emerald-700">
+                          {formatMoney(r.amountPaid)}
+                        </span>
                       </span>
-                      <span className="mx-1">·</span>
-                      <span className="text-muted-foreground">Due: </span>
-                      <span className="font-semibold text-rose-700">
-                        {formatMoney(r.remainingBalance)}
+                      <span>
+                        <span className="text-muted-foreground">Due: </span>
+                        <span className="font-semibold text-rose-700">
+                          {formatMoney(r.remainingBalance)}
+                        </span>
                       </span>
                     </div>
                   </div>

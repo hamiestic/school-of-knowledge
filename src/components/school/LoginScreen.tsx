@@ -96,8 +96,8 @@ export function LoginScreen({ onLoggedIn }: LoginScreenProps) {
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
-      {/* Brand panel - rich navy gradient with logo */}
-      <div className="lg:w-5/12 brand-bg text-primary-foreground flex flex-col justify-center items-center p-10 lg:p-16 relative overflow-hidden">
+      {/* Brand panel - eSchool blue gradient */}
+      <div className="lg:w-5/12 brand-bg text-primary-foreground flex flex-col justify-center items-center p-6 py-10 sm:p-10 lg:p-16 relative overflow-hidden">
         {/* Decorative pattern */}
         <div
           className="absolute inset-0 opacity-[0.08]"
@@ -118,27 +118,27 @@ export function LoginScreen({ onLoggedIn }: LoginScreenProps) {
           className="relative z-10 text-center max-w-md"
         >
           {/* Logo */}
-          <div className="relative inline-block mb-6">
+          <div className="relative inline-block mb-4 sm:mb-6">
             <div className="absolute inset-0 bg-secondary/30 rounded-full blur-2xl" />
             <img
               src={SCHOOL.logo}
               alt="School of Knowledge Logo"
-              className="relative w-32 h-32 lg:w-40 lg:h-40 object-contain rounded-full bg-white shadow-2xl ring-4 ring-white/30"
+              className="relative w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 object-contain rounded-full bg-white shadow-2xl ring-4 ring-white/30"
             />
           </div>
-          <h1 className="text-3xl lg:text-4xl font-bold tracking-tight">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
             {SCHOOL.name}
           </h1>
-          <p className="mt-2 text-secondary text-sm font-semibold tracking-widest uppercase">
+          <p className="mt-2 text-secondary text-xs sm:text-sm font-semibold tracking-widest uppercase">
             {SCHOOL.established}
           </p>
-          <p className="mt-4 text-primary-foreground/80 text-sm lg:text-base leading-relaxed">
+          <p className="mt-3 sm:mt-4 text-primary-foreground/80 text-xs sm:text-sm lg:text-base leading-relaxed max-w-xs sm:max-w-none">
             {SCHOOL.address}
           </p>
-          <p className="mt-2 text-secondary text-sm font-semibold">
+          <p className="mt-2 text-secondary text-xs sm:text-sm font-semibold">
             {SCHOOL.phones}
           </p>
-          <div className="mt-8 pt-6 border-t border-primary-foreground/20 text-xs text-primary-foreground/70 space-y-1">
+          <div className="mt-5 sm:mt-8 pt-4 sm:pt-6 border-t border-primary-foreground/20 text-xs text-primary-foreground/70 space-y-1">
             <p className="font-semibold tracking-wider uppercase">
               Management System
             </p>

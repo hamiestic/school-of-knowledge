@@ -137,34 +137,44 @@ export function Sidebar({ current, onNavigate, onLogout, user }: SidebarProps) {
   return (
     <>
       {/* Mobile top bar */}
-      <div className="lg:hidden sticky top-0 z-30 brand-bg text-primary-foreground flex items-center justify-between px-4 py-3 shadow-md no-print">
-        <div className="flex items-center gap-2">
+      <div className="md:hidden sticky top-0 z-30 brand-bg text-primary-foreground flex items-center justify-between px-4 py-2.5 shadow-md no-print">
+        <div className="flex items-center gap-2 min-w-0">
           <img
             src={SCHOOL.logo}
             alt="Logo"
-            className="w-8 h-8 object-contain rounded-full bg-white"
+            className="w-8 h-8 object-contain rounded-full bg-white shrink-0"
           />
-          <span className="font-bold text-sm">{SCHOOL.name}</span>
+          <div className="min-w-0">
+            <p className="font-bold text-sm leading-tight truncate">
+              {SCHOOL.name}
+            </p>
+            <p className="text-[9px] text-primary-foreground/70 leading-tight truncate">
+              Management System
+            </p>
+          </div>
         </div>
         <Button
           variant="ghost"
           size="sm"
           onClick={() => setOpen(true)}
-          className="text-primary-foreground hover:bg-primary-foreground/10"
+          className="text-primary-foreground hover:bg-primary-foreground/10 shrink-0 h-9 w-9 p-0"
+          aria-label="Open menu"
         >
           <Menu className="w-5 h-5" />
         </Button>
       </div>
 
       {/* Desktop sidebar */}
-      <aside className="hidden lg:flex w-64 shrink-0 flex-col bg-sidebar h-screen sticky top-0 no-print">
+      <aside className="hidden md:flex w-60 lg:w-64 shrink-0 flex-col bg-sidebar h-screen sticky top-0 no-print">
         {content}
       </aside>
 
       {/* Mobile drawer */}
       {open && (
-        <div className="fixed inset-0 z-50 lg:hidden no-print">
-          <div
+        <div className="fixed inset-0 z-50 md:hidden no-print">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setOpen(false)}
           />
@@ -172,11 +182,12 @@ export function Sidebar({ current, onNavigate, onLogout, user }: SidebarProps) {
             initial={{ x: -300 }}
             animate={{ x: 0 }}
             transition={{ type: "spring", damping: 25 }}
-            className="absolute left-0 top-0 bottom-0 w-72 bg-sidebar flex flex-col"
+            className="absolute left-0 top-0 bottom-0 w-72 max-w-[85vw] bg-sidebar flex flex-col"
           >
             <button
               onClick={() => setOpen(false)}
               className="absolute top-3 right-3 text-sidebar-foreground/70 hover:text-sidebar-foreground p-1 rounded-md hover:bg-sidebar-accent z-10"
+              aria-label="Close menu"
             >
               <X className="w-5 h-5" />
             </button>

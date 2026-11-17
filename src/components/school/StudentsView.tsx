@@ -390,7 +390,7 @@ export function StudentsView({
       <Card>
         <CardContent className="p-0">
           <div className="overflow-x-auto">
-            <Table>
+            <Table className="min-w-[760px]">
               <TableHeader>
                 <TableRow className="bg-muted/40">
                   <TableHead className="w-28">Student ID</TableHead>
@@ -578,7 +578,7 @@ export function StudentsView({
                 autoFocus
               />
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="space-y-1.5">
                 <Label htmlFor="fatherName">Father&apos;s Name</Label>
                 <Input
@@ -613,7 +613,7 @@ export function StudentsView({
                 </Select>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="space-y-1.5">
                 <Label htmlFor="rollNumber">Roll Number</Label>
                 <Input

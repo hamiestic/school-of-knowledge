@@ -166,7 +166,7 @@ export function FeeManagementView({
             (r: FeeRecord) => r.month === month && r.year === year
           );
           if (match) {
-            setActiveRecord(match);
+            setActiveRecord({ ...match, student: selectedStudent });
             setCategories(
               match.categories && match.categories.length > 0
                 ? match.categories.map((c) => ({
@@ -466,7 +466,7 @@ export function FeeManagementView({
             </p>
           ) : (
             <div className="border rounded-lg max-h-64 overflow-y-auto">
-              <Table>
+              <Table className="min-w-[460px]">
                 <TableBody>
                   {students.slice(0, 50).map((s) => (
                     <TableRow
@@ -569,7 +569,7 @@ export function FeeManagementView({
                   {categories.map((c, idx) => (
                     <div
                       key={idx}
-                      className="grid grid-cols-12 gap-2 items-center"
+                      className="flex flex-col sm:flex-row gap-2 sm:items-center"
                     >
                       <Input
                         value={c.description}
@@ -577,34 +577,36 @@ export function FeeManagementView({
                           updateCategory(idx, "description", e.target.value)
                         }
                         placeholder="Fee description (e.g. Monthly Tuition Fee, Books, Uniform, Exam Fee...)"
-                        className="col-span-7"
+                        className="w-full sm:flex-1"
                       />
-                      <div className="col-span-4 relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-muted-foreground">
-                          Rs.
-                        </span>
-                        <Input
-                          type="number"
-                          min="0"
-                          step="0.01"
-                          value={c.amount}
-                          onChange={(e) =>
-                            updateCategory(idx, "amount", e.target.value)
-                          }
-                          placeholder="0"
-                          className="pl-9 text-right"
-                        />
+                      <div className="flex items-center gap-2">
+                        <div className="relative flex-1 sm:w-36 sm:shrink-0">
+                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-muted-foreground">
+                            Rs.
+                          </span>
+                          <Input
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            value={c.amount}
+                            onChange={(e) =>
+                              updateCategory(idx, "amount", e.target.value)
+                            }
+                            placeholder="0"
+                            className="pl-9 text-right"
+                          />
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => removeCategory(idx)}
+                          type="button"
+                          className="shrink-0 text-rose-600 hover:bg-rose-50"
+                          disabled={categories.length === 1}
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
                       </div>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => removeCategory(idx)}
-                        type="button"
-                        className="col-span-1 text-rose-600 hover:bg-rose-50"
-                        disabled={categories.length === 1}
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </Button>
                     </div>
                   ))}
                 </div>
@@ -621,26 +623,26 @@ export function FeeManagementView({
               </div>
 
               {/* Calculations summary */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 rounded-lg bg-muted/40 p-4">
-                <CalcBox
-                  label="Total Fee Amount"
-                  value={formatMoney(totalAmount)}
-                />
-                <CalcBox
-                  label="Previous Outstanding"
-                  value={formatMoney(previousOutstanding)}
-                  hint="Carried from previous month"
-                />
-                <CalcBox
-                  label="Total Payable"
-                  value={formatMoney(totalPayable)}
-                  highlight
-                />
-                <CalcBox
-                  label="Already Paid"
-                  value={formatMoney(amountPaid)}
-                />
-              </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 rounded-lg bg-muted/40 p-4">
+              <CalcBox
+                label="Total Fee Amount"
+                value={formatMoney(totalAmount)}
+              />
+              <CalcBox
+                label="Previous Outstanding"
+                value={formatMoney(previousOutstanding)}
+                hint="Carried from previous month"
+              />
+              <CalcBox
+                label="Total Payable"
+                value={formatMoney(totalPayable)}
+                highlight
+              />
+              <CalcBox
+                label="Already Paid"
+                value={formatMoney(amountPaid)}
+              />
+            </div>
 
               <div className="flex items-center justify-between flex-wrap gap-3 pt-2">
                 {activeRecord && (
@@ -754,7 +756,7 @@ export function FeeManagementView({
                       Payment History for this Month
                     </Label>
                     <div className="border rounded-lg overflow-x-auto">
-                      <Table>
+                      <Table className="min-w-[560px]">
                         <TableHeader>
                           <TableRow className="bg-muted/40">
                             <TableHead>Receipt #</TableHead>
@@ -854,7 +856,7 @@ export function FeeManagementView({
                 </div>
               ) : (
                 <div className="border rounded-lg overflow-x-auto">
-                  <Table>
+                  <Table className="min-w-[620px]">
                     <TableHeader>
                       <TableRow className="bg-muted/40">
                         <TableHead>Month</TableHead>
@@ -912,7 +914,7 @@ export function FeeManagementView({
                               onClick={() => {
                                 setMonth(r.month);
                                 setYear(r.year);
-                                setActiveRecord(r);
+                                setActiveRecord({ ...r, student: selectedStudent });
                                 setCategories(
                                   r.categories && r.categories.length > 0
                                     ? r.categories.map((c) => ({
@@ -981,7 +983,7 @@ function CalcBox({
         {label}
       </p>
       <p
-        className={`text-lg font-bold mt-0.5 ${
+        className={`text-base sm:text-lg font-bold mt-0.5 break-words ${
           highlight ? "" : "text-foreground"
         }`}
       >

@@ -592,7 +592,7 @@ export function AttendanceView() {
               {selectedClasses.length} class(es) selected ·{" "}
               {finalHolidays.length} holiday(s) for {MONTHS[month - 1]} {year}
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               {generated &&
                 selectedClasses.every(
                   (c) => studentsByClass[c] !== undefined

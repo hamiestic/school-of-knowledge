@@ -45,75 +45,75 @@
 
 :root {
   --radius: 0.75rem;
-  /* Clean white background with subtle warmth */
-  --background: oklch(0.99 0.005 60);
-  --foreground: oklch(0.18 0.04 250);
+  /* eSchool-style light slate background */
+  --background: oklch(0.972 0.006 246);
+  --foreground: oklch(0.21 0.034 258);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.04 250);
+  --card-foreground: oklch(0.21 0.034 258);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.04 250);
-  /* Navy blue primary - deep and elegant */
-  --primary: oklch(0.26 0.09 256);
-  --primary-foreground: oklch(0.98 0.005 60);
-  /* Soft orange accent - warm and inviting */
+  --popover-foreground: oklch(0.21 0.034 258);
+  /* Bright sky blue primary (eSchool look) */
+  --primary: oklch(0.55 0.22 262);
+  --primary-foreground: oklch(0.99 0 0);
+  /* Warm orange accent for highlights */
   --secondary: oklch(0.7 0.17 55);
   --secondary-foreground: oklch(0.18 0.04 250);
-  --muted: oklch(0.96 0.012 250);
-  --muted-foreground: oklch(0.48 0.025 256);
-  --accent: oklch(0.94 0.04 60);
-  --accent-foreground: oklch(0.26 0.09 256);
+  --muted: oklch(0.955 0.01 246);
+  --muted-foreground: oklch(0.5 0.024 258);
+  --accent: oklch(0.94 0.025 246);
+  --accent-foreground: oklch(0.4 0.1 262);
   --destructive: oklch(0.58 0.22 25);
-  --border: oklch(0.9 0.01 256);
-  --input: oklch(0.92 0.012 256);
-  --ring: oklch(0.45 0.12 55);
-  --chart-1: oklch(0.26 0.09 256);
+  --border: oklch(0.915 0.012 246);
+  --input: oklch(0.92 0.012 246);
+  --ring: oklch(0.55 0.2 262);
+  --chart-1: oklch(0.55 0.22 262);
   --chart-2: oklch(0.7 0.17 55);
-  --chart-3: oklch(0.6 0.12 160);
-  --chart-4: oklch(0.65 0.18 320);
-  --chart-5: oklch(0.55 0.15 200);
-  /* Sidebar - rich navy gradient */
-  --sidebar: oklch(0.22 0.08 256);
-  --sidebar-foreground: oklch(0.96 0 0);
-  --sidebar-primary: oklch(0.7 0.17 55);
-  --sidebar-primary-foreground: oklch(0.18 0.04 250);
-  --sidebar-accent: oklch(0.3 0.08 256);
+  --chart-3: oklch(0.63 0.15 160);
+  --chart-4: oklch(0.78 0.14 85);
+  --chart-5: oklch(0.68 0.14 240);
+  /* Sidebar - deep blue gradient like eSchool */
+  --sidebar: oklch(0.26 0.075 262);
+  --sidebar-foreground: oklch(0.97 0.002 246);
+  --sidebar-primary: oklch(0.55 0.22 262);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.32 0.07 262);
   --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(0.32 0.07 256);
-  --sidebar-ring: oklch(0.7 0.17 55);
+  --sidebar-border: oklch(0.34 0.06 262);
+  --sidebar-ring: oklch(0.68 0.15 250);
 }
 
 .dark {
-  --background: oklch(0.16 0.025 256);
+  --background: oklch(0.17 0.02 260);
   --foreground: oklch(0.96 0 0);
-  --card: oklch(0.22 0.03 256);
+  --card: oklch(0.21 0.025 260);
   --card-foreground: oklch(0.96 0 0);
-  --popover: oklch(0.22 0.03 256);
+  --popover: oklch(0.21 0.025 260);
   --popover-foreground: oklch(0.96 0 0);
-  --primary: oklch(0.7 0.17 55);
-  --primary-foreground: oklch(0.18 0.04 250);
+  --primary: oklch(0.62 0.19 262);
+  --primary-foreground: oklch(0.98 0 0);
   --secondary: oklch(0.32 0.06 256);
   --secondary-foreground: oklch(0.96 0 0);
-  --muted: oklch(0.28 0.03 256);
+  --muted: oklch(0.28 0.03 260);
   --muted-foreground: oklch(0.7 0 0);
-  --accent: oklch(0.35 0.07 256);
+  --accent: oklch(0.3 0.06 262);
   --accent-foreground: oklch(0.96 0 0);
   --destructive: oklch(0.7 0.19 22);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.7 0.17 55);
+  --ring: oklch(0.62 0.19 262);
   --chart-1: oklch(0.6 0.16 55);
   --chart-2: oklch(0.6 0.1 160);
   --chart-3: oklch(0.65 0.18 320);
   --chart-4: oklch(0.55 0.15 200);
-  --chart-5: oklch(0.48 0.12 256);
-  --sidebar: oklch(0.18 0.03 256);
+  --chart-5: oklch(0.48 0.12 262);
+  --sidebar: oklch(0.18 0.03 262);
   --sidebar-foreground: oklch(0.96 0 0);
-  --sidebar-primary: oklch(0.7 0.17 55);
-  --sidebar-primary-foreground: oklch(0.18 0.04 250);
-  --sidebar-accent: oklch(0.28 0.03 256);
+  --sidebar-primary: oklch(0.62 0.19 262);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.28 0.04 262);
   --sidebar-accent-foreground: oklch(0.96 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.7 0.17 55);
+  --sidebar-ring: oklch(0.62 0.19 262);
 }
 
 @layer base {
@@ -133,17 +133,17 @@
 
 @layer components {
   /* Custom scrollbar */
-  /* Elegant card shadows */
+  /* Elegant card shadows (blue tint) */
   .card-elegant {
     box-shadow:
-      0 1px 2px oklch(0.2 0.05 256 / 0.04),
-      0 4px 16px -4px oklch(0.2 0.05 256 / 0.08);
+      0 1px 2px oklch(0.3 0.08 262 / 0.05),
+      0 4px 16px -4px oklch(0.3 0.08 262 / 0.08);
     transition: box-shadow 0.25s ease, transform 0.25s ease;
   }
   .card-elegant:hover {
     box-shadow:
-      0 2px 4px oklch(0.2 0.05 256 / 0.06),
-      0 8px 28px -6px oklch(0.2 0.05 256 / 0.15);
+      0 2px 4px oklch(0.3 0.08 262 / 0.07),
+      0 8px 28px -6px oklch(0.3 0.08 262 / 0.16);
   }
 
   /* Gradient text for headlines */
@@ -155,12 +155,12 @@
     color: transparent;
   }
 
-  /* Brand panel background - rich navy gradient */
+  /* Brand panel background - eSchool blue gradient */
   .brand-bg {
     background:
-      radial-gradient(ellipse at top, oklch(0.32 0.1 256) 0%, transparent 60%),
-      radial-gradient(ellipse at bottom right, oklch(0.36 0.08 30) 0%, transparent 50%),
-      linear-gradient(135deg, oklch(0.22 0.08 256) 0%, oklch(0.18 0.07 264) 100%);
+      radial-gradient(ellipse at top, oklch(0.42 0.13 262) 0%, transparent 55%),
+      radial-gradient(ellipse at bottom right, oklch(0.5 0.14 245) 0%, transparent 50%),
+      linear-gradient(135deg, oklch(0.3 0.1 262) 0%, oklch(0.22 0.08 264) 100%);
   }
 
   /* Stat card hover lift */
@@ -266,29 +266,33 @@
   padding: 2px 4px;
 }
 
-/* Receipt A6 compact styling */
+/* Receipt A6 styling - the component uses explicit px sizes (WYSIWYG with print).
+   Color-adjust so the colored header band prints exactly as shown. */
 .print-receipt {
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
   color: #000;
   background: #fff;
 }
-.print-receipt .receipt-a6 {
-  font-size: 9px;
-  line-height: 1.3;
-}
-.print-receipt .receipt-a6 h1 {
-  font-size: 14px;
-}
-.print-receipt .receipt-a6 h2 {
-  font-size: 11px;
-}
-.print-receipt .receipt-a6 table {
-  font-size: 8px;
-}
-.print-receipt .receipt-a6 table th,
-.print-receipt .receipt-a6 table td {
-  padding: 2px 4px;
+
+/* When the receipt dialog is open, the receipt is portal-rendered directly
+   under <body> (class printing-receipt is set on <body>). Hide every other
+   body child completely so the receipt prints as one clean A6 page with no
+   dialog chrome and no trailing blank pages. */
+@media print {
+  body.printing-receipt > *:not(.print-only-root) {
+    display: none !important;
+  }
+  body.printing-receipt > .print-only-root {
+    display: block !important;
+  }
+  /* The portal receipt flows normally from the top of the page */
+  body.printing-receipt .print-only-root .print-area {
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 }
 
 /* Attendance sheet - prettified print layout with auto-fit */

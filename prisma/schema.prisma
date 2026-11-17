@@ -1,0 +1,112 @@
+// School of Knowledge - School Management System
+// Prisma schema - supports PostgreSQL (cloud) and SQLite (local)
+// For cloud: use PostgreSQL connection string in DATABASE_URL
+// For local: use SQLite file path in DATABASE_URL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Admin user for authentication
+model Admin {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String
+  name         String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// Students - permanent records, soft delete via status
+model Student {
+  id               String   @id @default(cuid())
+  studentId        String   @unique // Auto-generated: SK-0001
+  name             String   // Required
+  fatherName       String?
+  className        String?  // Optional class name
+  rollNumber       String?
+  fixedMonthlyFee  Float    @default(0)
+  status           String   @default("ACTIVE") // ACTIVE / INACTIVE
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  feeRecords FeeRecord[]
+}
+
+// Fee Record - one per student per month/year (unique constraint)
+model FeeRecord {
+  id                 String   @id @default(cuid())
+  studentId          String   // FK to Student.id
+  month              Int      // 1-12
+  year               Int      // e.g. 2026
+  totalAmount        Float    @default(0) // sum of all categories
+  amountPaid         Float    @default(0) // sum of all payments
+  remainingBalance   Float    @default(0) // totalAmount - amountPaid
+  previousOutstanding Float   @default(0) // carried from previous month
+  totalPayable       Float    @default(0) // totalAmount + previousOutstanding
+  status             String   @default("UNPAID") // PAID / PARTIAL / UNPAID
+  remarks            String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  student   Student        @relation(fields: [studentId], references: [id], onDelete: Restrict)
+  categories FeeCategory[]
+  payments  FeePayment[]
+
+  @@unique([studentId, month, year])
+}
+
+// Fee Category - line items (flexible, customizable per record)
+model FeeCategory {
+  id          String   @id @default(cuid())
+  feeRecordId String
+  description String   // e.g. "Monthly Tuition Fee", "Books", "Uniform", "Others", custom
+  amount      Float    @default(0)
+  createdAt   DateTime @default(now())
+
+  feeRecord FeeRecord @relation(fields: [feeRecordId], references: [id], onDelete: Cascade)
+
+  @@index([feeRecordId])
+}
+
+// Fee Payment / Receipt - one row = one payment = one receipt
+model FeePayment {
+  id            String   @id @default(cuid())
+  feeRecordId   String
+  receiptNumber String   @unique // Auto-generated: RCP-0001
+  amountPaid    Float
+  paymentDate   DateTime
+  remarks       String?
+  createdAt     DateTime @default(now())
+
+  feeRecord FeeRecord @relation(fields: [feeRecordId], references: [id], onDelete: Restrict)
+
+  @@index([feeRecordId])
+}
+
+// Holidays for attendance marking
+model Holiday {
+  id        String   @id @default(cuid())
+  date      String   @unique // YYYY-MM-DD
+  label     String   // "Sunday", "School Holiday", "Public Holiday", custom
+  createdAt DateTime @default(now())
+}
+
+// Default fee categories (used as starting template when creating a fee record)
+model DefaultFeeCategory {
+  id          String   @id @default(cuid())
+  description String   @unique
+  amount      Float    @default(0)
+  createdAt   DateTime @default(now())
+}
+
+// Counter for auto-incrementing Student ID and Receipt Number
+model Counter {
+  id    String @id
+  value Int    @default(0)
+}
